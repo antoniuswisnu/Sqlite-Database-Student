@@ -37,11 +37,4 @@ public class ListStudentsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        studentsArrayList = dbHelper.getAllUsers();
-        adapter.setListStudents(studentsArrayList);
-        adapter.notifyDataSetChanged();
-    }
 }

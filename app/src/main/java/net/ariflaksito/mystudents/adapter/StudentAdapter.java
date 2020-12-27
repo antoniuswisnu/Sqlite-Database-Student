@@ -1,29 +1,18 @@
 package net.ariflaksito.mystudents.adapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import net.ariflaksito.mystudents.ListStudentsActivity;
 import net.ariflaksito.mystudents.R;
-import net.ariflaksito.mystudents.UpdateActivity;
 import net.ariflaksito.mystudents.db.DbHelper;
 import net.ariflaksito.mystudents.model.Student;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
@@ -60,40 +49,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
         holder.tvNim.setText(listStudents.get(position).getNim());
         holder.tvName.setText(listStudents.get(position).getName());
-        holder.btnEdit.setOnClickListener((View v) -> {
-            Intent intent = new Intent(activity, UpdateActivity.class);
-            intent.putExtra("user", (Serializable) listStudents.get(position));
-            activity.startActivity(intent);
-        });
-
-        holder.btnDelete.setOnClickListener((View v) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-            builder.setTitle("Konfirmasi hapus");
-            builder.setMessage("Apakah yakin akan dihapus?");
-
-            builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dbHelper.deleteUser(listStudents.get(position).getId());
-                    Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
-                    Intent myIntent = new Intent(activity, ListStudentsActivity.class);
-                    activity.startActivity(myIntent);
-                    activity.finish();
-                }
-            });
-
-            builder.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            AlertDialog alert = builder.create();
-            alert.show();
-
-        });
     }
 
     @Override
@@ -104,12 +59,9 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     public class StudentViewHolder extends RecyclerView.ViewHolder {
 
         final TextView tvNim, tvName;
-        final Button btnEdit, btnDelete;
 
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
-            btnEdit = itemView.findViewById(R.id.btn_edit);
-            btnDelete = itemView.findViewById(R.id.btn_delete);
             tvNim = itemView.findViewById(R.id.tv_item_nim);
             tvName = itemView.findViewById(R.id.tv_item_name);
 
