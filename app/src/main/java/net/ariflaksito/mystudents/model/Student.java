@@ -2,7 +2,7 @@ package net.ariflaksito.mystudents.model;
 
 import java.io.Serializable;
 
-public class Student {
+public class Student implements Serializable {
     private int id;
     private String name, nim;
 

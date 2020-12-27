@@ -68,4 +68,24 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return userModelArrayList;
     }
+
+    public void deleteUser(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_STD, KEY_ID + " = ?",
+                new String[]{String.valueOf(id)});
+    }
+
+    public int updateUser(int id, String nim, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name);
+        values.put(KEY_NIM, nim);
+
+        return db.update(TABLE_STD, values, KEY_ID + " = ?",
+                new String[]{String.valueOf(id)});
+
+    }
+
+
 }
