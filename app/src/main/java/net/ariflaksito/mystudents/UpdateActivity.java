@@ -15,8 +15,8 @@ import net.ariflaksito.mystudents.model.Student;
 public class UpdateActivity extends AppCompatActivity {
 
     private DbHelper dbHelper;
+    private EditText etName, etNim;
     private Button btnSave;
-    private EditText etNim, etName;
     private Student student;
 
     @Override

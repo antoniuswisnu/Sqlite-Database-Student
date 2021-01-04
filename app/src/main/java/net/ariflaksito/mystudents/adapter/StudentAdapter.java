@@ -61,7 +61,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             Intent intent = new Intent(activity, UpdateActivity.class);
             intent.putExtra("user", (Serializable) listStudents.get(position));
             activity.startActivity(intent);
-
         });
 
         holder.btnDelete.setOnClickListener((View v) -> {
@@ -88,10 +87,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
                 }
             });
 
-
             AlertDialog alert = builder.create();
             alert.show();
-
 
         });
     }

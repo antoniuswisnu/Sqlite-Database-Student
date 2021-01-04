@@ -44,6 +44,4 @@ public class ListStudentsActivity extends AppCompatActivity {
         adapter.setListStudents(studentsArrayList);
         adapter.notifyDataSetChanged();
     }
-
-
 }
