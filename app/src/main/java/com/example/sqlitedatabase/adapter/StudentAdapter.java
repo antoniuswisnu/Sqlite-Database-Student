@@ -1,5 +1,6 @@
-package net.ariflaksito.mystudents.adapter;
+package com.example.sqlitedatabase.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,11 +12,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.ariflaksito.mystudents.ListStudentsActivity;
-import net.ariflaksito.mystudents.R;
-import net.ariflaksito.mystudents.UpdateActivity;
-import net.ariflaksito.mystudents.db.DbHelper;
-import net.ariflaksito.mystudents.model.Student;
+import com.example.sqlitedatabase.ListStudentsActivity;
+import com.example.sqlitedatabase.R;
+import com.example.sqlitedatabase.UpdateActivity;
+import com.example.sqlitedatabase.db.DbHelper;
+import com.example.sqlitedatabase.model.Student;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StudentViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvNim.setText(listStudents.get(position).getNim());
         holder.tvName.setText(listStudents.get(position).getName());
         holder.btnEdit.setOnClickListener((View v) -> {

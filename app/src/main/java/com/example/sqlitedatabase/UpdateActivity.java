@@ -1,4 +1,4 @@
-package net.ariflaksito.mystudents;
+package com.example.sqlitedatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,14 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import net.ariflaksito.mystudents.db.DbHelper;
-import net.ariflaksito.mystudents.model.Student;
+import com.example.sqlitedatabase.db.DbHelper;
+import com.example.sqlitedatabase.model.Student;
 
 public class UpdateActivity extends AppCompatActivity {
 
     private DbHelper dbHelper;
     private EditText etName, etNim;
-    private Button btnSave;
+    private Button btnUpdate;
     private Student student;
 
     @Override
@@ -28,7 +28,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         etName = findViewById(R.id.edt_name);
         etNim = findViewById(R.id.edt_nim);
-        btnSave = findViewById(R.id.btn_submit);
+        btnUpdate = findViewById(R.id.btn_submit);
 
         Intent intent = getIntent();
         student = (Student) intent.getSerializableExtra("user");
@@ -36,7 +36,7 @@ public class UpdateActivity extends AppCompatActivity {
         etName.setText(student.getName());
         etNim.setText(student.getNim());
 
-        btnSave.setOnClickListener((View v) -> {
+        btnUpdate.setOnClickListener((View v) -> {
             dbHelper.updateUser(student.getId(), etNim.getText().toString(), etName.getText().toString());
             Toast.makeText(UpdateActivity.this, "Updated berhasil!", Toast.LENGTH_SHORT).show();
             finish();

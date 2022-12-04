@@ -1,15 +1,17 @@
-package net.ariflaksito.mystudents;
+package com.example.sqlitedatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
-import net.ariflaksito.mystudents.adapter.StudentAdapter;
-import net.ariflaksito.mystudents.db.DbHelper;
-import net.ariflaksito.mystudents.model.Student;
+import com.example.sqlitedatabase.adapter.StudentAdapter;
+import com.example.sqlitedatabase.db.DbHelper;
+import com.example.sqlitedatabase.model.Student;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -25,7 +27,7 @@ public class ListStudentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_students);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rview);
+        recyclerView = findViewById(R.id.rview);
         adapter = new StudentAdapter(this);
 
         dbHelper = new DbHelper(this);
@@ -35,6 +37,15 @@ public class ListStudentsActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListStudentsActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListStudentsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

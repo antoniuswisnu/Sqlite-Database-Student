@@ -1,4 +1,4 @@
-package net.ariflaksito.mystudents;
+package com.example.sqlitedatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import net.ariflaksito.mystudents.db.DbHelper;
+import com.example.sqlitedatabase.db.DbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     DbHelper dbHelper;
     private EditText etName, etNim;
-    private Button btnSave, btnList;
+    private Button btnSubmit, btnList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         etName = findViewById(R.id.edt_name);
         etNim = findViewById(R.id.edt_nim);
-        btnSave = findViewById(R.id.btn_submit);
+        btnSubmit = findViewById(R.id.btn_submit);
         btnList = findViewById(R.id.btn_list);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etNim.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Error: Nim harus diisi!", Toast.LENGTH_SHORT).show();
-                } else if (etName.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Error: Nama harus diisi!", Toast.LENGTH_SHORT).show();
+                if (etNim.getText().toString().isEmpty() || etName.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Error: Nim dan Nama harus diisi!", Toast.LENGTH_SHORT).show();
                 } else {
                     dbHelper.addUserDetail(etNim.getText().toString(), etName.getText().toString());
                     etName.setText("");

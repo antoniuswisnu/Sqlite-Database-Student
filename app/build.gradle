@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "net.ariflaksito.mystudents"
+        applicationId "com.example.sqlitedatabase"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

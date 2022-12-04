@@ -1,4 +1,4 @@
-package net.ariflaksito.mystudents;
+package com.example.sqlitedatabase;
 
 import org.junit.Test;
 

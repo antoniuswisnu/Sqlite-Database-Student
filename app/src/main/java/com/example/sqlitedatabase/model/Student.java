@@ -1,4 +1,4 @@
-package net.ariflaksito.mystudents.model;
+package com.example.sqlitedatabase.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package net.ariflaksito.mystudents.db;
+package com.example.sqlitedatabase.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,13 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import net.ariflaksito.mystudents.model.Student;
+import com.example.sqlitedatabase.model.Student;
 
 import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    public static String DATABASE_NAME = "dbsiakad";
+    public static String DATABASE_NAME = "sqlitedatabase";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_STD = "students";
     private static final String KEY_ID = "id";
@@ -44,9 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name);
         values.put(KEY_NIM, nim);
-        long insert = db.insert(TABLE_STD, null, values);
-
-        return insert;
+        return db.insert(TABLE_STD, null, values);
     }
 
     public ArrayList<Student> getAllUsers() {
@@ -62,7 +60,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 std.setId(c.getInt(c.getColumnIndex(KEY_ID)));
                 std.setName(c.getString(c.getColumnIndex(KEY_NAME)));
                 std.setNim(c.getString(c.getColumnIndex(KEY_NIM)));
-                // adding to Students list
                 userModelArrayList.add(std);
             } while (c.moveToNext());
         }
